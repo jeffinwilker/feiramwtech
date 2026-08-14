@@ -196,6 +196,9 @@ code{font-family:var(--mono);background:var(--glass);border:1px solid var(--stro
 .or-sep{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em}
 .or-sep::before,.or-sep::after{content:"";flex:1;height:1px;background:var(--stroke)}
 .form textarea[name="html"]{font-family:var(--mono);font-size:.82rem;line-height:1.5}
+/* páginas de formulário centralizadas (enviar jogo / foto) */
+.form-page{max-width:600px;margin:0 auto}
+.form-page .form{max-width:none}
 .alert{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.5);color:#ffb4ad;padding:.7rem 1rem;border-radius:12px}
 
 /* ---------- tips (static) ---------- */

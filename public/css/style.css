@@ -202,6 +202,13 @@ code{font-family:var(--mono);background:var(--glass);border:1px solid var(--stro
 .tips-body{margin-top:2rem}
 .tips-body h2{margin-top:1.6rem;letter-spacing:-.02em}
 .tips-body ul{padding-left:1.2rem} .tips-body li{margin:.4rem 0}
+/* player vertical (YouTube Shorts) */
+.video-short{aspect-ratio:9/16;max-width:340px;margin-left:auto;margin-right:auto}
+/* lista de comandos em cards */
+.cmd-list{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:12px}
+.cmd-list li{background:var(--glass);border:1px solid var(--stroke);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:5px}
+.cmd-list li strong{color:var(--accent-soft);font-size:1.02rem;letter-spacing:-.01em}
+.cmd-list li span{color:var(--muted);font-size:.92rem;line-height:1.5}
 
 /* ---------- tables (admin) ---------- */
 .admin-section{margin-bottom:2.5rem}

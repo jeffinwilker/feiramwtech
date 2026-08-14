@@ -11,6 +11,7 @@ module.exports = {
   root,
   env: process.env.NODE_ENV || 'development',
   port: parseInt(process.env.PORT || '3210', 10),
+  bindHost: process.env.BIND_HOST || '127.0.0.1',
   sessionSecret: process.env.SESSION_SECRET || 'dev-secret-troque-isto',
   adminPassword: process.env.ADMIN_PASSWORD || 'admin',
   ipSalt: process.env.IP_SALT || process.env.SESSION_SECRET || 'mwtech-salt',

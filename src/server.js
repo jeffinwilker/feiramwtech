@@ -119,7 +119,8 @@ async function start() {
     console.warn('[db] AVISO: não foi possível inicializar o banco:', e.message);
     console.warn('     Configure o PostgreSQL no .env — jogos/fotos falharão até lá. Páginas estáticas funcionam.');
   }
-  app.listen(config.port, () => console.log(`MW Tech rodando em http://localhost:${config.port}`));
+  app.listen(config.port, config.bindHost, () =>
+    console.log(`MW Tech rodando em http://${config.bindHost}:${config.port}`));
 }
 
 start();

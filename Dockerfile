@@ -12,6 +12,8 @@ COPY . .
 RUN mkdir -p storage
 
 ENV NODE_ENV=production
+# No container, escuta em todas as interfaces (o isolamento fica na rede/porta do Docker)
+ENV BIND_HOST=0.0.0.0
 EXPOSE 3210
 
 CMD ["node", "src/server.js"]

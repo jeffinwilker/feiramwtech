@@ -50,14 +50,17 @@ async function handleUpload(req, res, next) {
   const tmpPath = req.file && req.file.path;
   let destDir = null;
   try {
-    if (!req.file) throw Object.assign(new Error('Selecione um arquivo .zip ou .html'), { status: 400 });
-
     const title = (req.body.titulo || '').trim();
     const author = (req.body.autor || '').trim() || null;
     const description = (req.body.descricao || '').trim() || null;
     if (!title) throw Object.assign(new Error('Informe o título do jogo'), { status: 400 });
 
-    const ext = path.extname(req.file.originalname).toLowerCase();
+    const htmlText = (req.body.html || '').trim();
+    const hasFile = req.file && req.file.size > 0;
+    if (!hasFile && !htmlText) {
+      throw Object.assign(new Error('Envie um arquivo (.zip ou .html) ou cole o HTML do jogo.'), { status: 400 });
+    }
+
     const slug = `${util.slugify(title)}-${util.randomId(6)}`;
     destDir = path.join(config.storage.games, slug);
     fs.mkdirSync(destDir, { recursive: true });
@@ -66,15 +69,23 @@ async function handleUpload(req, res, next) {
     let kind = 'single';
     let cover = null;
 
-    if (ext === '.zip') {
-      if (!util.isZip(tmpPath)) throw Object.assign(new Error('Arquivo ZIP inválido.'), { status: 400 });
-      extractZip(tmpPath, destDir);
-      entry = findEntry(destDir);
-      if (!entry) throw Object.assign(new Error('O ZIP precisa conter um index.html (ou algum arquivo .html).'), { status: 400 });
-      cover = findCover(destDir, entry);
-      kind = 'zip';
+    if (hasFile) {
+      const ext = path.extname(req.file.originalname).toLowerCase();
+      if (ext === '.zip') {
+        if (!util.isZip(tmpPath)) throw Object.assign(new Error('Arquivo ZIP inválido.'), { status: 400 });
+        extractZip(tmpPath, destDir);
+        entry = findEntry(destDir);
+        if (!entry) throw Object.assign(new Error('O ZIP precisa conter um index.html (ou algum arquivo .html).'), { status: 400 });
+        cover = findCover(destDir, entry);
+        kind = 'zip';
+      } else {
+        fs.copyFileSync(tmpPath, path.join(destDir, 'index.html'));
+        entry = 'index.html';
+        kind = 'single';
+      }
     } else {
-      fs.copyFileSync(tmpPath, path.join(destDir, 'index.html'));
+      // HTML colado direto no formulário (sem arquivo)
+      fs.writeFileSync(path.join(destDir, 'index.html'), htmlText, 'utf8');
       entry = 'index.html';
       kind = 'single';
     }

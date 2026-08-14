@@ -193,6 +193,9 @@ code{font-family:var(--mono);background:var(--glass);border:1px solid var(--stro
 .form textarea{resize:vertical} .form .file-name{font-weight:400}
 .hint{background:rgba(0,0,0,.25);border:1px solid var(--stroke);border-left:3px solid var(--accent);border-radius:10px;
   padding:.8rem 1rem;color:var(--muted);font-size:.9rem}
+.or-sep{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em}
+.or-sep::before,.or-sep::after{content:"";flex:1;height:1px;background:var(--stroke)}
+.form textarea[name="html"]{font-family:var(--mono);font-size:.82rem;line-height:1.5}
 .alert{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.5);color:#ffb4ad;padding:.7rem 1rem;border-radius:12px}
 
 /* ---------- tips (static) ---------- */

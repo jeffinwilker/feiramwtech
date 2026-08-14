@@ -15,12 +15,14 @@ const storage = multer.diskStorage({
   },
 });
 
-const limits = { fileSize: config.maxUploadBytes, files: 1 };
+// fieldSize permite colar HTML grande no campo de texto (não só arquivo)
+const limits = { fileSize: config.maxUploadBytes, files: 1, fieldSize: config.maxUploadBytes };
 
 const gameUpload = multer({
   storage,
   limits,
   fileFilter: (req, file, cb) => {
+    if (!file.originalname) return cb(null, false); // campo de arquivo vazio: ignora (vão colar o HTML)
     const ext = path.extname(file.originalname).toLowerCase();
     if (['.zip', '.html', '.htm'].includes(ext)) cb(null, true);
     else cb(Object.assign(new Error('Envie um arquivo .zip ou .html'), { status: 400 }));

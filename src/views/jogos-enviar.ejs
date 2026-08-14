@@ -3,7 +3,7 @@
 <div class="page-head">
   <div>
     <h1>Enviar jogo</h1>
-    <p class="muted">Aceita um <strong>.zip</strong> (com <code>index.html</code> dentro) ou um <strong>.html</strong> único. Máx: <%= maxMb %> MB.</p>
+    <p class="muted">Envie um <strong>.zip</strong> (com <code>index.html</code>), um <strong>.html</strong> único, ou <strong>cole o HTML</strong> direto. Máx: <%= maxMb %> MB.</p>
   </div>
   <a class="btn" href="/jogos">← Voltar ao catálogo</a>
 </div>
@@ -21,18 +21,26 @@
 
   <label>
     Descrição
-    <textarea name="descricao" maxlength="600" rows="3" placeholder="Opcional — conte do que se trata o jogo"></textarea>
+    <textarea name="descricao" maxlength="600" rows="3" placeholder="Opcional: conte do que se trata o jogo"></textarea>
   </label>
 
   <label>
-    Arquivo do jogo (.zip ou .html) *
-    <input type="file" name="arquivo" accept=".zip,.html,.htm" required data-file>
+    Arquivo do jogo (.zip ou .html)
+    <input type="file" name="arquivo" accept=".zip,.html,.htm" data-file>
     <span class="file-name muted" data-file-name></span>
   </label>
 
+  <div class="or-sep"><span>ou</span></div>
+
+  <label>
+    Colar o HTML do jogo
+    <textarea name="html" rows="12" placeholder="Cole aqui o código HTML completo do seu jogo. Ex.: começa com &lt;!doctype html&gt; ou &lt;html&gt; ..."></textarea>
+  </label>
+
   <div class="hint">
-    <strong>Dica:</strong> se o jogo tiver imagens, sons ou vários arquivos, compacte tudo num <code>.zip</code> com um
-    <code>index.html</code> na raiz. Uma imagem <code>cover.png</code> junto do <code>index.html</code> vira a capa no catálogo.
+    Escolha <strong>uma</strong> das opções: envie um <strong>arquivo</strong> ou <strong>cole o HTML</strong> acima.
+    Para jogos com imagens, sons ou vários arquivos, use um <code>.zip</code> com <code>index.html</code> na raiz
+    (um <code>cover.png</code> junto vira a capa no catálogo).
   </div>
 
   <button class="btn btn-primary" type="submit">Publicar jogo</button>

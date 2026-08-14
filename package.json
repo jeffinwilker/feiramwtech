@@ -1,0 +1,26 @@
+{
+  "name": "mwtech",
+  "version": "1.0.0",
+  "description": "Portal MW Tech: catálogo de jogos HTML, galeria de fotos e páginas de dicas (IA, Realidade Virtual, Alexa).",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.1",
+    "express-session": "^1.18.1",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.1",
+    "pg": "^8.13.1"
+  }
+}

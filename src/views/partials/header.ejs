@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> · MW Tech</title>
+  <link rel="stylesheet" href="/static/css/style.css?v=<%= ver %>">
+  <link rel="icon" href="/static/favicon.svg">
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <span class="streak s1"></span><span class="streak s2"></span><span class="streak s3"></span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="/"><span class="logo">MW</span>mwtech</a>
+    <button class="nav-toggle" aria-label="Menu" data-nav-toggle>☰</button>
+    <nav class="nav" data-nav>
+      <a href="/jogos" class="<%= active === 'jogos' ? 'on' : '' %>">Jogos</a>
+      <a href="/fotos" class="<%= active === 'fotos' ? 'on' : '' %>">Fotos</a>
+      <a href="/dicas/ia" class="<%= active === 'ia' ? 'on' : '' %>">IA</a>
+      <a href="/dicas/vr" class="<%= active === 'vr' ? 'on' : '' %>">Realidade Virtual</a>
+      <a href="/dicas/alexa" class="<%= active === 'alexa' ? 'on' : '' %>">Alexa</a>
+      <% if (isAdmin) { %><a href="/admin" class="admin-link <%= active === 'admin' ? 'on' : '' %>">Painel</a><% } %>
+    </nav>
+    <div class="tb-cta">
+      <a class="btn" href="/admin/login">Entrar</a>
+      <a class="btn btn-primary" href="/jogos/enviar">Postar</a>
+    </div>
+  </header>
+  <main class="container">

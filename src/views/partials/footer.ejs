@@ -1,0 +1,15 @@
+  </main>
+  <footer class="site-footer">
+    <span class="muted">MW Tech · Portal da comunidade</span>
+    <span class="footer-links">
+      <% if (isAdmin) { %>
+        <a href="/admin">Painel</a>
+        <form method="post" action="/admin/logout" class="inline"><button class="linklike">Sair</button></form>
+      <% } else { %>
+        <a href="/admin/login">Admin</a>
+      <% } %>
+    </span>
+  </footer>
+  <script src="/static/js/app.js?v=<%= ver %>"></script>
+</body>
+</html>

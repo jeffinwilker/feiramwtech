@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<div class="page-head">
+  <div>
+    <div class="eyebrow">Jogando</div>
+    <h1><%= game.title %></h1>
+    <% if (game.author) { %><p class="muted">por <%= game.author %></p><% } %>
+  </div>
+  <div class="play-actions">
+    <button class="btn" data-fullscreen>⛶ Tela cheia</button>
+    <a class="btn" href="/jogos">← Catálogo</a>
+  </div>
+</div>
+
+<div class="game-stage">
+  <iframe
+    id="game-frame"
+    src="<%= gameUrl %>"
+    title="<%= game.title %>"
+    sandbox="allow-scripts allow-pointer-lock allow-orientation-lock"
+    allow="fullscreen; gamepad; accelerometer; gyroscope"
+    allowfullscreen
+    loading="lazy"></iframe>
+</div>
+
+<% if (game.description) { %>
+  <div class="game-description">
+    <p><%= game.description %></p>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<article class="tips">
+  <header class="tips-head">
+    <div class="tips-emoji">🤖</div>
+    <h1>Dicas de IA</h1>
+    <p class="muted">Como usar inteligência artificial no dia a dia.</p>
+  </header>
+
+  <!-- ==== VÍDEO ====
+       Troque VIDEO_ID_AQUI pelo ID do seu vídeo do YouTube.
+       Ex.: em https://youtu.be/dQw4w9WgXcQ  o ID é  dQw4w9WgXcQ -->
+  <div class="video-wrap">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/VIDEO_ID_AQUI"
+      title="Vídeo de dicas de IA"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+
+  <section class="tips-body">
+    <h2>Dicas rápidas</h2>
+    <ul>
+      <li><strong>Seja específico:</strong> quanto mais contexto você dá, melhor a resposta da IA.</li>
+      <li><strong>Peça em etapas:</strong> divida tarefas grandes em pedidos menores.</li>
+      <li><strong>Revise sempre:</strong> a IA pode errar — confira dados e fontes importantes.</li>
+      <li><strong>Dê exemplos:</strong> mostrar o formato que você quer melhora muito o resultado.</li>
+    </ul>
+
+    <p class="muted small">Edite este texto em <code>src/views/dicas-ia.ejs</code>.</p>
+  </section>
+</article>
+
+<%- include('partials/footer') %>

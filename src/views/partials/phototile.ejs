@@ -1,0 +1,9 @@
+<figure class="photo" data-lightbox="/m/fotos/<%= p.filename %>" data-caption="<%= p.caption || '' %>">
+  <img src="/m/fotos/<%= p.filename %>" alt="<%= p.caption || 'Foto' %>" loading="lazy">
+  <% if (p.caption || p.author) { %>
+    <figcaption>
+      <% if (p.caption) { %><span><%= p.caption %></span><% } %>
+      <% if (p.author) { %><span class="muted">@<%= p.author %></span><% } %>
+    </figcaption>
+  <% } %>
+</figure>

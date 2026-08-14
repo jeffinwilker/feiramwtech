@@ -1,0 +1,20 @@
+<%
+  var _pairs = [['#ff8a5b','#c0343f'],['#ffb057','#f0663f'],['#a78bfa','#4f46e5'],['#38bdf8','#2563eb'],
+                ['#34d399','#0f766e'],['#f472b6','#7c3aed'],['#e05cf0','#7c5cff'],['#fb7185','#9f1239']];
+  function _ghash(s){ var h = 0; for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) >>> 0; } return h; }
+  var _h = _ghash(g.slug), _hp = _pairs[_h % _pairs.length], _num = ('000' + (_h % 10000)).slice(-4);
+  var _badge = (g.kind === 'single' ? 'HTML' : 'ZIP');
+  var _cls = (typeof cardClass !== 'undefined' ? cardClass : '');
+%>
+<a class="gcard <%= _cls %>" href="/jogos/<%= g.slug %>" style="--c1:<%= _hp[0] %>;--c2:<%= _hp[1] %>">
+  <div class="media"><% if (g.cover_path) { %><img src="<%= g.cover_path %>" alt="Capa de <%= g.title %>" loading="lazy"><% } %></div>
+  <% if (!g.cover_path) { %><span class="glyph"><%= (g.title || '?').trim().charAt(0).toUpperCase() %></span><% } %>
+  <div class="scrim"></div>
+  <span class="badge"><%= _badge %></span>
+  <div class="info">
+    <div class="cardno">JOGO •••• <%= _num %></div>
+    <div class="title"><%= g.title %></div>
+    <% if (g.author) { %><div class="by">por <%= g.author %></div><% } %>
+  </div>
+  <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+</a>

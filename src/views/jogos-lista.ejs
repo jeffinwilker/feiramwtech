@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+<div class="head">
+  <div>
+    <div class="eyebrow">Catálogo</div>
+    <h1>Jogos</h1>
+    <p>Público e aberto — poste o seu e apareça aqui na hora.</p>
+  </div>
+  <div class="tabs">
+    <a class="<%= sort === 'recentes' ? 'on' : '' %>" href="/jogos?sort=recentes">Recentes</a>
+    <a class="<%= sort === 'populares' ? 'on' : '' %>" href="/jogos?sort=populares">Populares</a>
+    <a class="<%= sort === 'todos' ? 'on' : '' %>" href="/jogos?sort=todos">Todos</a>
+  </div>
+</div>
+
+<% if (!games.length) { %>
+  <div class="empty">
+    <p>Nenhum jogo por aqui ainda.</p>
+    <a class="btn btn-primary" href="/jogos/enviar">Seja o primeiro a postar</a>
+  </div>
+<% } else { %>
+  <div class="grid-games">
+    <% games.forEach(function (g) { %><%- include('partials/gamecard', { g: g }) %><% }); %>
+  </div>
+<% } %>
+
+<div class="fab">
+  <a href="/jogos/enviar" aria-label="Enviar jogo"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></a>
+</div>
+
+<%- include('partials/footer') %>

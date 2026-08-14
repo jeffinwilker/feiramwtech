@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<div class="auth-box">
+  <h1>Painel do admin</h1>
+  <p class="muted">Acesso restrito para moderar jogos e fotos.</p>
+
+  <% if (error) { %><div class="alert"><%= error %></div><% } %>
+
+  <form class="form" method="post" action="/admin/login">
+    <label>
+      Senha
+      <input type="password" name="senha" required autofocus autocomplete="current-password">
+    </label>
+    <button class="btn btn-primary" type="submit">Entrar</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

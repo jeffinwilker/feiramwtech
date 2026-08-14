@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+<div class="page-head">
+  <div>
+    <h1>Enviar foto</h1>
+    <p class="muted">JPG, PNG, GIF ou WEBP. Máx: <%= maxMb %> MB.</p>
+  </div>
+  <a class="btn" href="/fotos">← Voltar à galeria</a>
+</div>
+
+<form class="form" method="post" action="/fotos/enviar" enctype="multipart/form-data">
+  <label>
+    Imagem *
+    <input type="file" name="arquivo" accept="image/jpeg,image/png,image/gif,image/webp" required data-file>
+    <span class="file-name muted" data-file-name></span>
+  </label>
+
+  <label>
+    Legenda
+    <input type="text" name="legenda" maxlength="200" placeholder="Opcional">
+  </label>
+
+  <label>
+    Seu nome / autor
+    <input type="text" name="autor" maxlength="80" placeholder="Opcional">
+  </label>
+
+  <button class="btn btn-primary" type="submit">Publicar foto</button>
+</form>
+
+<%- include('partials/footer') %>

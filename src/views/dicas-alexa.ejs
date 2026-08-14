@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<article class="tips">
+  <header class="tips-head">
+    <div class="tips-emoji">🔊</div>
+    <h1>Dicas de Alexa</h1>
+    <p class="muted">Truques para aproveitar melhor a sua Alexa.</p>
+  </header>
+
+  <!-- ==== VÍDEO ====
+       Troque VIDEO_ID_AQUI pelo ID do seu vídeo do YouTube.
+       Ex.: em https://youtu.be/dQw4w9WgXcQ  o ID é  dQw4w9WgXcQ -->
+  <div class="video-wrap">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/VIDEO_ID_AQUI"
+      title="Vídeo de dicas de Alexa"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+
+  <section class="tips-body">
+    <h2>Comandos úteis</h2>
+    <ul>
+      <li><strong>Rotinas:</strong> "Alexa, bom dia" pode acender luzes, ler notícias e mais.</li>
+      <li><strong>Lembretes e alarmes:</strong> "Alexa, me lembre de tomar água às 15h".</li>
+      <li><strong>Casa inteligente:</strong> controle luzes, tomadas e TV por voz.</li>
+      <li><strong>Timer de cozinha:</strong> "Alexa, timer de 10 minutos".</li>
+    </ul>
+
+    <p class="muted small">Edite este texto em <code>src/views/dicas-alexa.ejs</code>.</p>
+  </section>
+</article>
+
+<%- include('partials/footer') %>

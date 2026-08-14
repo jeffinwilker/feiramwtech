@@ -1,0 +1,77 @@
+<%- include('partials/header') %>
+<%
+  var addPairs = [['#ff8a5b','#c0343f'],['#a78bfa','#4f46e5'],['#34d399','#0f766e'],['#38bdf8','#2563eb'],
+                  ['#f472b6','#7c3aed'],['#ffb057','#f0663f'],['#e05cf0','#7c5cff'],['#fb7185','#9f1239']];
+  var addLabels = ['Seu jogo aqui','Poste em segundos','É de graça','Sem cadastro','Apareça no topo','Bora postar?'];
+  var hasGames = games && games.length;
+  var hasPhotos = photos && photos.length;
+%>
+
+<section class="hero">
+  <span class="pill"><span class="dot"></span><span class="tag">Novo</span> Poste seu jogo em segundos →</span>
+  <h1>Crie, poste e <span class="accent">jogue.</span></h1>
+  <p>A comunidade onde qualquer pessoa publica jogos em HTML e fotos — e todo mundo joga, curte e compartilha.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="/jogos">Explorar jogos</a>
+    <a class="btn" href="/jogos/enviar">Enviar o meu</a>
+  </div>
+
+  <div class="showcase">
+    <% if (hasGames) { %>
+      <% if (games[1]) { %><%- include('partials/gamecard', { g: games[1], cardClass: 'c-l' }) %><% } %>
+      <%- include('partials/gamecard', { g: games[0], cardClass: 'c-m' }) %>
+      <% if (games[2]) { %><%- include('partials/gamecard', { g: games[2], cardClass: 'c-r' }) %><% } %>
+    <% } else { %>
+      <%- include('partials/addcard', { c1: '#34d399', c2: '#0f766e', label: 'É de graça', cardClass: 'c-l' }) %>
+      <%- include('partials/addcard', { c1: '#ff8a5b', c2: '#c0343f', label: 'Poste seu jogo', cardClass: 'c-m' }) %>
+      <%- include('partials/addcard', { c1: '#38bdf8', c2: '#2563eb', label: 'Sem cadastro', cardClass: 'c-r' }) %>
+    <% } %>
+  </div>
+</section>
+
+<section class="block">
+  <div class="head">
+    <div>
+      <div class="eyebrow">Catálogo</div>
+      <h2>Jogos em destaque</h2>
+      <p><% if (hasGames) { %>Público e aberto — poste o seu e apareça aqui na hora.<% } else { %>Ainda não tem jogo — seja o primeiro a postar.<% } %></p>
+    </div>
+    <div class="tabs">
+      <a class="on" href="/jogos?sort=recentes">Recentes</a>
+      <a href="/jogos?sort=populares">Populares</a>
+      <a href="/jogos?sort=todos">Todos</a>
+    </div>
+  </div>
+  <div class="grid-games">
+    <% if (hasGames) { %>
+      <% games.forEach(function (g) { %><%- include('partials/gamecard', { g: g }) %><% }); %>
+    <% } else { %>
+      <% for (var i = 0; i < 6; i++) { %><%- include('partials/addcard', { c1: addPairs[i][0], c2: addPairs[i][1], label: addLabels[i] }) %><% } %>
+    <% } %>
+  </div>
+</section>
+
+<section class="block">
+  <div class="head">
+    <div>
+      <div class="eyebrow">Galeria</div>
+      <h2>Fotos da comunidade</h2>
+      <p><% if (hasPhotos) { %>Todas no mesmo tamanho, em retrato. Clique para ampliar.<% } else { %>Sua galeria começa aqui — poste a primeira foto.<% } %></p>
+    </div>
+    <a class="btn" href="/fotos">Ver tudo →</a>
+  </div>
+  <div class="gallery">
+    <% if (hasPhotos) { %>
+      <% photos.forEach(function (p) { %><%- include('partials/phototile', { p: p }) %><% }); %>
+    <% } else { %>
+      <% for (var j = 0; j < 8; j++) { %><%- include('partials/addtile', { c1: addPairs[j][0], c2: addPairs[j][1], label: (j % 2 ? 'Bora postar?' : 'Sua foto aqui') }) %><% } %>
+    <% } %>
+  </div>
+  <% if (hasPhotos) { %><%- include('partials/lightbox') %><% } %>
+</section>
+
+<div class="fab">
+  <a href="/jogos/enviar" aria-label="Postar"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></a>
+</div>
+
+<%- include('partials/footer') %>

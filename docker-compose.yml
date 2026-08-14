@@ -1,0 +1,29 @@
+# MW Tech — sobe SÓ a aplicação (não cria um novo Postgres).
+# Ela se conecta ao PostgreSQL que você já tem (o mesmo do Evolution),
+# usando um banco/usuário DEDICADOS (veja db/init.sql). Sem misturar projetos.
+services:
+  mwtech:
+    build: .
+    container_name: mwtech
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${PORT:-3210}:3210"
+    volumes:
+      - ./storage:/app/storage
+    # Permite usar PGHOST=host.docker.internal quando o Postgres roda no HOST do VPS
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    # ---------------------------------------------------------------
+    # SE o seu PostgreSQL roda DENTRO do Docker (ex.: junto do Evolution),
+    # descomente o bloco abaixo e ajuste o nome da rede para a rede onde
+    # o container do Postgres está. Aí no .env use PGHOST=<nome-do-container-postgres>.
+    #
+    # networks:
+    #   - postgres_net
+
+# networks:
+#   postgres_net:
+#     external: true
+#     name: evolution_default   # <-- troque pelo nome real da rede (docker network ls)

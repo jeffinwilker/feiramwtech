@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+
+<div class="head">
+  <div>
+    <div class="eyebrow">Galeria</div>
+    <h1>Fotos</h1>
+    <p>Todas no mesmo tamanho, em retrato. Clique para ampliar.</p>
+  </div>
+  <a class="btn btn-primary" href="/fotos/enviar">+ Enviar foto</a>
+</div>
+
+<% if (!photos.length) { %>
+  <div class="empty">
+    <p>Nenhuma foto ainda.</p>
+    <a class="btn btn-primary" href="/fotos/enviar">Poste a primeira</a>
+  </div>
+<% } else { %>
+  <div class="gallery">
+    <% photos.forEach(function (p) { %><%- include('partials/phototile', { p: p }) %><% }); %>
+  </div>
+<% } %>
+
+<%- include('partials/lightbox') %>
+
+<div class="fab">
+  <a href="/fotos/enviar" aria-label="Enviar foto"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></a>
+</div>
+
+<%- include('partials/footer') %>

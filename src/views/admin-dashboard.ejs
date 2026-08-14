@@ -1,0 +1,64 @@
+<%- include('partials/header') %>
+
+<div class="page-head">
+  <div>
+    <h1>Painel de moderação</h1>
+    <p class="muted"><%= games.length %> jogo(s) · <%= photos.length %> foto(s)</p>
+  </div>
+  <form method="post" action="/admin/logout" class="inline"><button class="btn">Sair</button></form>
+</div>
+
+<section class="admin-section">
+  <h2>Jogos</h2>
+  <% if (!games.length) { %>
+    <p class="muted">Nenhum jogo.</p>
+  <% } else { %>
+    <table class="table">
+      <thead><tr><th>Título</th><th>Autor</th><th>Enviado</th><th></th></tr></thead>
+      <tbody>
+        <% games.forEach(function (g) { %>
+          <tr>
+            <td><a href="/jogos/<%= g.slug %>" target="_blank" rel="noopener"><%= g.title %></a></td>
+            <td class="muted"><%= g.author || '—' %></td>
+            <td class="muted"><%= new Date(g.created_at).toLocaleString('pt-BR') %></td>
+            <td class="right">
+              <form method="post" action="/admin/jogos/<%= g.id %>/apagar" class="inline"
+                    data-confirm="Apagar o jogo &quot;<%= g.title %>&quot;? Esta ação não pode ser desfeita.">
+                <button class="btn btn-danger">Apagar</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } %>
+</section>
+
+<section class="admin-section">
+  <h2>Fotos</h2>
+  <% if (!photos.length) { %>
+    <p class="muted">Nenhuma foto.</p>
+  <% } else { %>
+    <table class="table">
+      <thead><tr><th>Prévia</th><th>Legenda</th><th>Autor</th><th>Enviada</th><th></th></tr></thead>
+      <tbody>
+        <% photos.forEach(function (p) { %>
+          <tr>
+            <td><img class="thumb" src="/m/fotos/<%= p.filename %>" alt=""></td>
+            <td><%= p.caption || '—' %></td>
+            <td class="muted"><%= p.author || '—' %></td>
+            <td class="muted"><%= new Date(p.created_at).toLocaleString('pt-BR') %></td>
+            <td class="right">
+              <form method="post" action="/admin/fotos/<%= p.id %>/apagar" class="inline"
+                    data-confirm="Apagar esta foto? Esta ação não pode ser desfeita.">
+                <button class="btn btn-danger">Apagar</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } %>
+</section>
+
+<%- include('partials/footer') %>

@@ -209,6 +209,36 @@ code{font-family:var(--mono);background:var(--glass);border:1px solid var(--stro
 .cmd-list li{background:var(--glass);border:1px solid var(--stroke);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:5px}
 .cmd-list li strong{color:var(--accent-soft);font-size:1.02rem;letter-spacing:-.01em}
 .cmd-list li span{color:var(--muted);font-size:.92rem;line-height:1.5}
+/* legenda do vídeo */
+.video-caption{text-align:center;color:var(--muted);font-size:.9rem;margin:.7rem 0 0}
+.tips-body h3{margin:1.5rem 0 .4rem;font-size:1.14rem;letter-spacing:-.01em}
+/* cards de prompt (IA) */
+.prompt-card{background:var(--glass);border:1px solid var(--stroke);border-radius:16px;padding:16px 18px;margin:14px 0}
+.prompt-card h3{margin:0 0 .3rem}
+.prompt-card p{margin:.3rem 0}
+.prompt-box{background:rgba(0,0,0,.28);border:1px solid var(--stroke);border-left:3px solid var(--accent);border-radius:10px;padding:12px 15px;margin:.7rem 0;color:var(--text);line-height:1.6}
+.ideal{color:var(--muted);font-size:.9rem}
+.ideal strong{color:var(--accent-soft)}
+/* callouts (dicas de ouro) */
+.callout{background:rgba(255,122,77,.08);border:1px solid rgba(255,122,77,.3);border-radius:14px;padding:16px 18px;margin:18px 0}
+.callout h3{margin:0 0 .3rem}
+.callout p{margin:.2rem 0}
+.callout-cta{background:rgba(139,92,246,.10);border-color:rgba(139,92,246,.32)}
+/* passos numerados (estrutura do prompt) */
+.steps{list-style:none;counter-reset:step;padding:0;margin:1rem 0;display:grid;gap:12px}
+.steps li{background:var(--glass);border:1px solid var(--stroke);border-radius:14px;padding:14px 16px 14px 54px;position:relative}
+.steps li::before{counter-increment:step;content:counter(step);position:absolute;left:14px;top:13px;width:28px;height:28px;border-radius:9px;background:var(--brand);color:#241206;font-weight:800;display:grid;place-items:center;font-size:.92rem}
+.steps li strong{color:var(--accent-soft)}
+.steps li .ex{display:block;margin-top:.4rem;color:var(--muted)}
+.formula{text-align:center;font-weight:700;background:var(--glass);border:1px solid var(--stroke);border-radius:12px;padding:13px;margin:14px 0}
+/* cards de aplicativos (RA) */
+.app-card{background:var(--glass);border:1px solid var(--stroke);border-radius:16px;padding:18px 20px;margin:16px 0}
+.app-card h3{margin:0 0 .1rem;font-size:1.2rem}
+.app-tag{color:var(--accent-soft);font-weight:600;margin:.1rem 0 .6rem}
+.app-meta{list-style:none;padding:0;margin:.8rem 0;display:flex;flex-direction:column;gap:5px;font-size:.9rem}
+.app-meta li{margin:0}
+.badge-free{display:inline-block;background:rgba(56,224,165,.14);border:1px solid rgba(56,224,165,.4);color:#7ff0c8;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+.app-card .btn{margin-top:.3rem}
 
 /* ---------- tables (admin) ---------- */
 .admin-section{margin-bottom:2.5rem}

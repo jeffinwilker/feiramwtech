@@ -22,8 +22,8 @@ router.get('/', async (req, res) => {
 router.get('/dicas/ia', (req, res) =>
   res.render('dicas-ia', { title: 'Dicas de IA', active: 'ia' }));
 
-router.get('/dicas/vr', (req, res) =>
-  res.render('dicas-vr', { title: 'Dicas de Realidade Virtual', active: 'vr' }));
+router.get('/dicas/ar', (req, res) =>
+  res.render('dicas-ar', { title: 'Dicas de Realidade Aumentada', active: 'ar' }));
 
 router.get('/dicas/alexa', (req, res) =>
   res.render('dicas-alexa', { title: 'Dicas de Alexa', active: 'alexa' }));

@@ -96,6 +96,10 @@ code{font-family:var(--mono);background:var(--glass);border:1px solid var(--stro
 .showcase .c-m{transform:translateY(-26px) scale(1.04);z-index:2}
 .showcase::before{content:"";position:absolute;bottom:-40px;width:60%;height:180px;
   background:radial-gradient(closest-side,rgba(255,122,77,.5),transparent);filter:blur(30px)}
+/* hover dos cards flutuantes: mantém a posição/inclinação e só dá um leve destaque (evita o "pulo") */
+.showcase .c-l:hover{transform:translateX(-240px) rotate(-9deg) rotateY(12deg) scale(1.05);filter:brightness(1)}
+.showcase .c-m:hover{transform:translateY(-32px) scale(1.08)}
+.showcase .c-r:hover{transform:translateX(240px) rotate(9deg) rotateY(-12deg) scale(1.05);filter:brightness(1)}
 
 /* ---------- home section cards ---------- */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:3rem}
